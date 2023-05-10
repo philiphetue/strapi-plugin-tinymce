@@ -29,7 +29,10 @@ const Wysiwyg = ({
 
         assets.map((asset) => {
             if (asset.mime.includes('image') && typeof window !== 'undefined') {
-                const imgTag = `<p><img src="${asset.url}" caption="${asset.caption}" alt="${asset.alternativeText}"/></p>`;
+                let imgTag = `<img src="${asset.url}" alt="${asset.alt}"/>`;
+                if (asset.caption) {
+                    imgTag = `<figure>${imgTag}<figcaption>${asset.caption}</figcaption></figure>`
+                }
                 window.tinymce.activeEditor.insertContent(imgTag);
                 newValue = window.tinymce.activeEditor.getContent();
             }

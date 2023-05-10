@@ -11,6 +11,7 @@ const MediaLib = ({ isOpen, onChange, onToggle }) => {
             alt: f.alternativeText || f.name,
             url: prefixFileUrlWithBackendUrl(f.url),
             mime: f.mime,
+            caption: f.caption,
         }));
 
         onChange(formattedFiles);
